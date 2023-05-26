@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun InitUI() {
         val products by productsState.collectAsState()
-        ProductsGrid(products = products)
+        ProductsGrid(products = products, this::startProductActivity)
     }
 
     private fun startProductActivity(productItem: ProductItem) {
