@@ -8,8 +8,15 @@ class ProductActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val productItem =
-            ProductItem("", 0.0, "", -1)//todo replace with the passed values from intent
+        val title: String?= intent.getStringExtra(KEY_TITLE)
+        val category: String?=intent.getStringExtra(KEY_CATEGORY)
+        val price: Double?=intent.getDoubleExtra(KEY_PRICE,0.0)
+        val image : Int?=intent.getIntExtra(KEY_IMAGE,-1)
+        val productItem: ProductItem = if (title != null && category != null && price != null && image != null) {
+            ProductItem(title, price, category, image)
+        } else {
+            ProductItem("", 0.0, "", -1)
+        }
         setContent { ProductDetails(productItem) }
     }
     companion object {
