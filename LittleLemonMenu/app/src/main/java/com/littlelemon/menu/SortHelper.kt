@@ -15,9 +15,9 @@ class SortHelper {
     }
 
     private fun List<ProductItem>.sortBasedOnPriceAscending(): List<ProductItem> {
-        return sortedWith(compareBy { it.price })
+        return sortedBy { it.price }
     }
     private fun List<ProductItem>.sortBasedOnPriceDescending(): List<ProductItem> {
-        return sortedWith(compareByDescending { it.price })
+        return sortedByDescending { it.price }
     }
 }

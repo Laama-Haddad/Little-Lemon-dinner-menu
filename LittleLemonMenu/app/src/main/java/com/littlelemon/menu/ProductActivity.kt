@@ -8,17 +8,14 @@ class ProductActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val title: String?= intent.getStringExtra(KEY_TITLE)
-        val category: String?=intent.getStringExtra(KEY_CATEGORY)
-        val price: Double?=intent.getDoubleExtra(KEY_PRICE,0.0)
-        val image : Int?=intent.getIntExtra(KEY_IMAGE,-1)
-        val productItem: ProductItem = if (title != null && category != null && price != null && image != null) {
-            ProductItem(title, price, category, image)
-        } else {
-            ProductItem("", 0.0, "", -1)
-        }
+        val title = intent.getStringExtra(KEY_TITLE)
+        val category = intent.getStringExtra(KEY_CATEGORY)
+        val price = intent.getDoubleExtra(KEY_PRICE, 0.0)
+        val image = intent.getIntExtra(KEY_IMAGE, -1)
+        val productItem = ProductItem(title ?: "", price, category ?: "", image)
         setContent { ProductDetails(productItem) }
     }
+
     companion object {
         const val KEY_TITLE = "title"
         const val KEY_PRICE = "price"
